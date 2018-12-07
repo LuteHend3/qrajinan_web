@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Des 2018 pada 14.53
+-- Waktu pembuatan: 07 Des 2018 pada 15.57
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.8
 
@@ -215,16 +215,16 @@ CREATE TABLE `warna` (
 --
 ALTER TABLE `alamat_toko`
   ADD PRIMARY KEY (`id_alamat_toko`),
-  ADD UNIQUE KEY `id_toko` (`id_toko`),
-  ADD UNIQUE KEY `id_provinsi` (`id_provinsi`);
+  ADD KEY `id_toko` (`id_toko`),
+  ADD KEY `id_provinsi` (`id_provinsi`);
 
 --
 -- Indeks untuk tabel `alamat_user`
 --
 ALTER TABLE `alamat_user`
   ADD PRIMARY KEY (`id_alamat_user`),
-  ADD UNIQUE KEY `id_user` (`id_user`),
-  ADD UNIQUE KEY `id_provinsi` (`id_provinsi`);
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_provinsi` (`id_provinsi`);
 
 --
 -- Indeks untuk tabel `kategori`
@@ -237,31 +237,31 @@ ALTER TABLE `kategori`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id_order`),
-  ADD UNIQUE KEY `id_user` (`id_user`);
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indeks untuk tabel `order_product`
 --
 ALTER TABLE `order_product`
   ADD PRIMARY KEY (`id_order_product`),
-  ADD UNIQUE KEY `id_order` (`id_order`),
-  ADD UNIQUE KEY `id_product` (`id_product`);
+  ADD KEY `id_order` (`id_order`),
+  ADD KEY `id_product` (`id_product`);
 
 --
 -- Indeks untuk tabel `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id_product`),
-  ADD UNIQUE KEY `id_toko` (`id_toko`),
-  ADD UNIQUE KEY `id_warna` (`id_warna`),
-  ADD UNIQUE KEY `id_kategori` (`id_kategori`);
+  ADD KEY `id_toko` (`id_toko`),
+  ADD KEY `id_warna` (`id_warna`),
+  ADD KEY `id_kategori` (`id_kategori`);
 
 --
 -- Indeks untuk tabel `product_photos`
 --
 ALTER TABLE `product_photos`
   ADD PRIMARY KEY (`id_product_photos`),
-  ADD UNIQUE KEY `id_product` (`id_product`);
+  ADD KEY `id_product` (`id_product`);
 
 --
 -- Indeks untuk tabel `provinsi`
