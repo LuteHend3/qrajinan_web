@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Des 2018 pada 15.57
+-- Waktu pembuatan: 10 Des 2018 pada 08.21
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.8
 
@@ -35,37 +35,13 @@ CREATE TABLE `admin` (
   `nama_admin` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `alamat_toko`
+-- Dumping data untuk tabel `admin`
 --
 
-CREATE TABLE `alamat_toko` (
-  `id_alamat_toko` int(10) NOT NULL,
-  `id_toko` int(10) NOT NULL,
-  `alamat_toko` text NOT NULL,
-  `kode_pos_toko` varchar(255) NOT NULL,
-  `id_provinsi` int(10) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `alamat_user`
---
-
-CREATE TABLE `alamat_user` (
-  `id_alamat_user` int(10) NOT NULL,
-  `id_user` int(10) NOT NULL,
-  `alamat_user` text NOT NULL,
-  `kode_pos_user` varchar(255) NOT NULL,
-  `id_provinsi` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`) VALUES
+(0, '', 'd41d8cd98f00b204e9800998ecf8427e', ''),
+(0, '', 'd41d8cd98f00b204e9800998ecf8427e', '');
 
 -- --------------------------------------------------------
 
@@ -76,8 +52,8 @@ CREATE TABLE `alamat_user` (
 CREATE TABLE `kategori` (
   `id_kategori` int(10) NOT NULL,
   `nama_kategori` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -90,8 +66,8 @@ CREATE TABLE `orders` (
   `id_order` int(10) NOT NULL,
   `id_user` int(10) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `tanggal_order` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `tanggal_update_order` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `tanggal_order` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `tanggal_update_order` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -107,8 +83,8 @@ CREATE TABLE `order_product` (
   `quantity` int(11) NOT NULL,
   `singel_price` decimal(13,2) NOT NULL,
   `total` decimal(13,2) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -126,8 +102,8 @@ CREATE TABLE `product` (
   `deskripsi` text NOT NULL,
   `price` decimal(13,2) NOT NULL,
   `stock` int(20) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -142,19 +118,8 @@ CREATE TABLE `product_photos` (
   `path` varchar(255) NOT NULL,
   `thumbnail_path` varchar(255) NOT NULL,
   `alt` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `provinsi`
---
-
-CREATE TABLE `provinsi` (
-  `id_provinsi` int(10) NOT NULL,
-  `nama_provinsi` varchar(255) NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -170,8 +135,11 @@ CREATE TABLE `toko` (
   `password` varchar(255) NOT NULL,
   `deskripsi_toko` text NOT NULL,
   `visi_misi_toko` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `alamat_toko` text NOT NULL,
+  `kodepos_toko` varchar(255) NOT NULL,
+  `provinsi_toko` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -188,9 +156,12 @@ CREATE TABLE `user` (
   `nama_pertama_user` varchar(255) NOT NULL,
   `nama_terakhir_user` varchar(255) NOT NULL,
   `tanggal_lahir_user` date NOT NULL,
+  `alamat_user` text NOT NULL,
+  `kodepos_user` varchar(255) NOT NULL,
+  `provinsi_user` varchar(255) NOT NULL,
   `phone_user` varchar(255) NOT NULL,
-  `create_atd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -202,29 +173,13 @@ CREATE TABLE `user` (
 CREATE TABLE `warna` (
   `id_warna` int(10) NOT NULL,
   `code_warna` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `alamat_toko`
---
-ALTER TABLE `alamat_toko`
-  ADD PRIMARY KEY (`id_alamat_toko`),
-  ADD KEY `id_toko` (`id_toko`),
-  ADD KEY `id_provinsi` (`id_provinsi`);
-
---
--- Indeks untuk tabel `alamat_user`
---
-ALTER TABLE `alamat_user`
-  ADD PRIMARY KEY (`id_alamat_user`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_provinsi` (`id_provinsi`);
 
 --
 -- Indeks untuk tabel `kategori`
@@ -264,12 +219,6 @@ ALTER TABLE `product_photos`
   ADD KEY `id_product` (`id_product`);
 
 --
--- Indeks untuk tabel `provinsi`
---
-ALTER TABLE `provinsi`
-  ADD PRIMARY KEY (`id_provinsi`);
-
---
 -- Indeks untuk tabel `toko`
 --
 ALTER TABLE `toko`
@@ -290,18 +239,6 @@ ALTER TABLE `warna`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
-
---
--- AUTO_INCREMENT untuk tabel `alamat_toko`
---
-ALTER TABLE `alamat_toko`
-  MODIFY `id_alamat_toko` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `alamat_user`
---
-ALTER TABLE `alamat_user`
-  MODIFY `id_alamat_user` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -334,12 +271,6 @@ ALTER TABLE `product_photos`
   MODIFY `id_product_photos` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `provinsi`
---
-ALTER TABLE `provinsi`
-  MODIFY `id_provinsi` int(10) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT untuk tabel `toko`
 --
 ALTER TABLE `toko`
@@ -360,19 +291,6 @@ ALTER TABLE `warna`
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
-
---
--- Ketidakleluasaan untuk tabel `alamat_toko`
---
-ALTER TABLE `alamat_toko`
-  ADD CONSTRAINT `alamat_toko_ibfk_1` FOREIGN KEY (`id_toko`) REFERENCES `toko` (`id_toko`);
-
---
--- Ketidakleluasaan untuk tabel `alamat_user`
---
-ALTER TABLE `alamat_user`
-  ADD CONSTRAINT `alamat_user_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `alamat_user_ibfk_2` FOREIGN KEY (`id_provinsi`) REFERENCES `provinsi` (`id_provinsi`);
 
 --
 -- Ketidakleluasaan untuk tabel `orders`
@@ -400,12 +318,6 @@ ALTER TABLE `product`
 --
 ALTER TABLE `product_photos`
   ADD CONSTRAINT `product_photos_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`);
-
---
--- Ketidakleluasaan untuk tabel `provinsi`
---
-ALTER TABLE `provinsi`
-  ADD CONSTRAINT `provinsi_ibfk_1` FOREIGN KEY (`id_provinsi`) REFERENCES `alamat_toko` (`id_provinsi`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
