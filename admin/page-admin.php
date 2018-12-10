@@ -43,8 +43,7 @@ include '../koneksi.php';
       </thead>
       <tbody>
 <?php
-    require_once('../koneksi.php');
-    
+        
     $result = mysqli_query($koneksi,"SELECT * FROM admin order by id_admin") or die(mysqli_error());
     $no=1; 
     while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array

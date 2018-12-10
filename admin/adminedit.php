@@ -15,7 +15,7 @@ include '../koneksi.php';
     $no=1; 
     while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
     ?>
-<form name="dataadmin" action="adminupdate.php" method="POST">
+<form name="dataadminedit" action="adminupdate.php" method="POST">
 	<label for="id_admin">ID Admin</label>
 	<input type="text" name="id_admin" id="id_admin" readonly="" required="" value="<?php echo $data['id_admin'] ?>">
 	<br>
