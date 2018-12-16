@@ -9,10 +9,12 @@ else {
   $nav ='includes/navconnected.php';
   $idsess = $_SESSION['id'];
 }
-
-
 require 'includes/header.php';
 require $nav; ?>
+
+<button class="fixed-button wobble" onclick="window.location.href='cart'" type="button">
+  <i class="material-icons">shopping_cart</i>
+</button>
 
 <div class="container-fluid home" id="top">
   <div class="container search">
@@ -33,6 +35,7 @@ require $nav; ?>
     </nav>
   </div>
 </div>
+
 
 <div class="container most">
   <div class="row">

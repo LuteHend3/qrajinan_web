@@ -131,7 +131,7 @@
 .home {
   padding-top: 200px;
   padding-bottom: 190px;
-  background: #494551;
+  background: #20B2AA;
 }
 
 .home .search {
@@ -255,7 +255,7 @@
 }
 
 .page-footer {
-  background-color: #494551 !important;
+  background-color: #20B2AA !important;
 }
 
 .page-footer .footer-info {
@@ -676,4 +676,63 @@
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+}
+
+.fixed-button {
+  background-color: #FF2434;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  position: fixed;
+  bottom: 0px;
+  right: 15px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  box-shadow: 1px 3px 5px #888888;
+}
+
+@keyframes wobble {
+  16.65% {
+    -webkit-transform: translateY(8px);
+    -ms-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  33.3% {
+    -webkit-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateY(4px);
+    -ms-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  66.6% {
+    -webkit-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateY(1px);
+    -ms-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.wobble {
+  -webkit-animation-name: wobble;
+  animation-name: wobble;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
