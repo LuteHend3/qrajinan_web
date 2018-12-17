@@ -10,7 +10,7 @@ if (!isset($_SESSION['logged_in'])) {
 }
 else {
   $nav ='includes/navconnected.php';
-  $idsess = $_SESSION['id'];
+  $idsess = $_SESSION['id_user'];
 }
 
 $id_product =$_GET['id'];
@@ -23,7 +23,7 @@ $id_product =$_GET['id'];
         <div class="nav-wrapper">
           <div class="col s12">
             <a href="index" class="breadcrumb">Home</a>
-            <a href="product.php?id=<? $id_product; ?>" class="breadcrumb">Product</a>
+            <a href="product.php?id_product=<? $id_product; ?>" class="breadcrumb">Product</a>
           </div>
         </div>
       </nav>
@@ -42,17 +42,18 @@ $id_product =$_GET['id'];
             include 'db.php';
 
             //get products
-            $queryproduct = "SELECT id, name, price, description, id_picture, thumbnail
-              FROM product WHERE id = '{$id_product}'";
+            $queryproduct = "SELECT id_product, nama_product, harga_produk, stok_barang, deskripsi_product, id_picture, thumbnail
+              FROM product WHERE id_product = '$id_product'";
             $result1 = $connection->query($queryproduct);
             if ($result1->num_rows > 0) {
             // output data of each row
             while($rowproduct = $result1->fetch_assoc()) {
-              $id_productdb = $rowproduct['id'];
-              $name_product = $rowproduct['name'];
-              $price_product = $rowproduct['price'];
+              $id_productdb = $rowproduct['id_product'];
+              $name_product = $rowproduct['nama_product'];
+              $price_product = $rowproduct['harga_produk'];
+              $stok_barang = $rowproduct['stok_barang'];
               $id_pic = $rowproduct['id_picture'];
-              $description = $rowproduct['description'];
+              $description = $rowproduct['deskripsi_product'];
               $thumbnail_product = $rowproduct['thumbnail']; }}?>
             <img class="materialboxed" width="650" src="products/<?= $thumbnail_product; ?>" alt="">
           </div>
@@ -90,33 +91,43 @@ $id_product =$_GET['id'];
           <div class="input-field col s12">
             <i class="material-icons prefix">shopping_basket</i>
             <input id="icon_prefix" type="number" name="quantity" min="1" class="validate" required>
-            <label for="icon_prefix">Qantity</label>
+            <label for="icon_prefix">Quantity</label>
           </div>
+          <h5>Stock left <?= $stok_barang; ?></h5>
 
            <?php
 
             if (isset($_POST['buy'])) {
 
                if (!isset($_SESSION['logged_in'])) {
-                 echo "<meta http-equiv='refresh' content='0;url=http://localhost/Smartshop/sign' />";
+                 echo "<meta http-equiv='refresh' content='0;url=http://localhost/Qrajinan/sign' />";
                }
 
                else {
               $quantity = $_POST['quantity'];
 
-              //inserting into command
+              //inserting into transaksi
               include 'db.php';
 
-              $querybuy = "INSERT INTO command(id_produit, quantity, statut, id_user)
+              $querybuy = "INSERT INTO transaksi(id_produit, kuantitas_transaksi, status_transaksi, id_user)
               VALUES ('$id_productdb','$quantity','ordered', '$idsess')";
 
-            if ($connection->query($querybuy) === TRUE) {
+               if ($quantity > $stok_barang) {
+              ?>
+              <script>
+                alert("Jumlah barang yang mau di pesan melebihi stok!!");
+              </script>
+              <?php
+            }
+            elseif ($connection->query($querybuy) === TRUE) {
                      $_SESSION['item'] += 1;
 
-                     echo "<meta http-equiv='refresh' content='0;url=product.php?id=$id_productdb' />";
+                     echo "<meta http-equiv='refresh' content='0;url=product.php?id_product=$id_productdb' />";
                  } else {
                      echo "<h5 class='text-red'>Error: " . $querybuy . "</h5><br><br><br>" . $connection->error;
                  }
+           
+
                  $connection->close();
                  }
                 }
@@ -134,4 +145,6 @@ $id_product =$_GET['id'];
 </div>
 <?php
  require 'includes/secondfooter.php';
- require 'includes/footer.php'; ?>
+ require 'includes/footer.php'; 
+ ?>
+

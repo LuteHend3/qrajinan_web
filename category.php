@@ -6,14 +6,14 @@ if (!isset($_SESSION['logged_in'])) {
 }
 else {
   $nav ='includes/navconnected.php';
-  $idsess = $_SESSION['id'];
+  $idsess = $_SESSION['id_user'];
 }
 
-if(!isset($_GET['id'])){
+if(!isset($_GET['id_kategori'])){
 header('Location: index');
 }
 
-$id_category =$_GET['id'];
+$id_category =$_GET['id_kategori'];
  require 'includes/header.php';
  require $nav; ?>
  <div class="container-fluid product-page">
@@ -22,7 +22,7 @@ $id_category =$_GET['id'];
         <div class="nav-wrapper">
           <div class="col s12">
             <a href="index" class="breadcrumb">Home</a>
-            <a href="category.php?id=<?= $id_category; ?>" class="breadcrumb">Category</a>
+            <a href="category.php?id_kategori=<?= $id_category; ?>" class="breadcrumb">Category</a>
           </div>
         </div>
       </nav>
@@ -39,15 +39,15 @@ $id_category =$_GET['id'];
           include 'db.php';
 
           //get categories
-            $querycategory = "SELECT id, name FROM category";
+            $querycategory = "SELECT id_kategori, nama_kategori FROM kategori";
             $total = $connection->query($querycategory);
             if ($total->num_rows > 0) {
             // output data of each row
             while($rowcategory = $total->fetch_assoc()) {
-              $id_categorydb = $rowcategory['id'];
-              $name_category = $rowcategory['name'];
+              $id_categorydb = $rowcategory['id_kategori'];
+              $name_category = $rowcategory['nama_kategori'];
           ?>
-         <a href="category.php?id=<?= $id_categorydb; ?>" class='collection-item <?php if($id_categorydb == $id_category) {echo"active";} ?>' ><?= $name_category; ?></a>
+         <a href="category.php?id_kategori=<?= $id_categorydb; ?>" class='collection-item <?php if($id_categorydb == $id_category) {echo"active";} ?>' ><?= $name_category; ?></a>
        <?php }} ?>
        </div>
       </div>
@@ -67,7 +67,7 @@ $id_category =$_GET['id'];
 
           $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
 
-          $queryproduct = "SELECT SQL_CALC_FOUND_ROWS id, name, price, id_picture, thumbnail FROM product WHERE id_category = '{$id_category}' ORDER BY id DESC LIMIT {$start}, 16";
+          $queryproduct = "SELECT SQL_CALC_FOUND_ROWS id_product, nama_product, harga_produk, id_picture, thumbnail FROM product WHERE id_kategori = '{$id_category}' ORDER BY id_product DESC LIMIT {$start}, 16";
           $result = $connection->query($queryproduct);
 
           //pages
@@ -77,9 +77,9 @@ $id_category =$_GET['id'];
             if ($result->num_rows > 0) {
             // output data of each row
             while($rowproduct = $result->fetch_assoc()) {
-              $id_product = $rowproduct['id'];
-              $name_product = $rowproduct['name'];
-              $price_product = $rowproduct['price'];
+              $id_product = $rowproduct['id_product'];
+              $name_product = $rowproduct['nama_product'];
+              $price_product = $rowproduct['harga_produk'];
               $id_pic = $rowproduct['id_picture'];
               $thumbnail_product = $rowproduct['thumbnail'];
 
@@ -91,7 +91,7 @@ $id_category =$_GET['id'];
                         <a href="product.php?id=<?= $id_product; ?>">
                           <img src="products/<?= $thumbnail_product; ?>"></a>
                         <span class="card-title grey-text"><?= $name_product; ?></span>
-                        <a href="product.php?id=<?= $id_product; ?>" class="btn-floating halfway-fab waves-effect waves-light right"><i class="material-icons">add</i></a>
+                        <a href="product.php?id_product=<?= $id_product; ?>" class="btn-floating halfway-fab waves-effect waves-light right"><i class="material-icons">add</i></a>
                       </div>
                       <div class="card-action">
                         <div class="container-fluid">

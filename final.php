@@ -9,75 +9,74 @@
 
     include 'db.php';
 
-    $querycmd ="SELECT product.id,
-                       product.name as 'product',
-                       product.price as 'price',
+    $querycmd ="SELECT product.id_product as 'id_product',
+                       product.nama_product as 'product',
+                       product.harga_produk as 'price',
+                       product.stok_barang as 'stock',
 
-                       command.id as 'idcmd',
-                       command.id_produit,
-                       command.quantity as 'quantity',
-                       command.statut,
-                       command.id_user as 'iduser',
+                       transaksi.id_transaksi as 'idtrsk',
+                       transaksi.id_produit,
+                       transaksi.kuantitas_transaksi as 'quantity',
+                       transaksi.status_transaksi,
+                       transaksi.id_user as 'iduser',
 
-                       users.id
+                       users.id_user
 
-                       FROM product, command, users
-                       WHERE product.id = command.id_produit AND users.id = command.id_user
-                       AND command.id_user = '{$_SESSION['id']}' AND command.statut = 'ordered'";
+                       FROM product, transaksi, users
+                       WHERE product.id_product = transaksi.id_produit AND users.id_user = transaksi.id_user
+                       AND transaksi.id_user = '{$_SESSION['id_user']}' AND transaksi.status_transaksi = 'ordered'";
     $resultcmd = $connection->query($querycmd);
     if($resultcmd->num_rows > 0){
       while ($rowcmd = $resultcmd->fetch_assoc()) {
+           $idproductcmd = $rowcmd['id_product'];
            $productcmd = $rowcmd['product'];
            $quantitycmd = $rowcmd['quantity'];
            $pricecmd = $rowcmd['price'];
-           $idcmd = $rowcmd['idcmd'];
+           $stock = $rowcmd['stock'];
+           $idtrsk = $rowcmd['idtrsk'];
            $firstnamecmd = $_POST['firstname'];
            $lastnamecmd = $_POST['lastname'];
-           $countrycmd = $_POST['country'];
-           $citycmd = $_POST['city'];
            $addresscmd = $_POST['address'];
 
            $idusercmd = $rowcmd['iduser'];
 
 
     $price = $pricecmd * $quantitycmd;
+    
     $fullname = $firstnamecmd . " " . $lastnamecmd ;
 
-    $query_details = "INSERT INTO details_command(product,
-                                                  quantity,
-                                                  price,
-                                                  id_command,
+    $query_details = "INSERT INTO details_transaksi(product,
+                                                  kuantitas_transaksi,
+                                                  harga_transaksi,
+                                                  id_transaksi,
                                                   id_user,
                                                   user,
                                                   address,
-                                                  country,
-                                                  city,
-                                                  statut) VALUES('$productcmd',
+                                                  status_transaksi) VALUES('$productcmd',
                                                                '$quantitycmd',
                                                                '$price',
-                                                               '$idcmd',
+                                                               '$idtrsk',
                                                                '$idusercmd',
                                                                '$fullname',
                                                                '$addresscmd',
-                                                               '$countrycmd',
-                                                               '$citycmd',
                                                                'ready')";
     $resultdetails = $connection->query($query_details);
+$stok_final = $stock - $quantitycmd;
+$stokkurang = "UPDATE product SET stok_barang = $stok_final WHERE id_product = '$idproductcmd'";
+$stok_kurang = mysqli_query($connection, $stokkurang);
 
-    $querypay = "UPDATE command SET statut = 'paid' WHERE id_user = '{$_SESSION['id']}' AND statut = 'ordered'";
+    $querypay = "UPDATE transaksi SET status_transaksi = 'paid' WHERE id_user = '{$_SESSION['id_user']}' AND status_transaksi = 'ordered'";     
     $resultpay = mysqli_query($connection, $querypay);
   }
 }
     unset($_SESSION["item"]);
 
    $nav ='includes/navconnected.php';
-   $idsess = $_SESSION['id'];
+   $idsess = $_SESSION['id_user'];
 
    $email_sess = $_SESSION['email'];
-   $country_sess = $_SESSION['country'];
    $firstname_sess = $_SESSION['firstname'];
    $lastname_sess = $_SESSION['lastname'];
-   $city_sess = $_SESSION['city'];
    $address_sess = $_SESSION['address'];
  }
 

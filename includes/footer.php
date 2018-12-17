@@ -1,4 +1,4 @@
-
+<div class="fab"><a href="cart" class="dark-text baskett"><i class="material-icons" style="color:#fff;">shopping_cart</i></a></div>
 
 <!-- JQUERY FIRST -->
 <script src="src/js/jquery-2.1.4.js"></script>

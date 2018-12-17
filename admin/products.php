@@ -29,16 +29,16 @@ if ($_SESSION['role'] !== 'admin') {
            include '../db.php';
             // get stock
             $querystock = "SELECT
-            product.id_category as 'name',
-            count(product.id_category) as 'total',
+            product.id_kategori as 'name',
+            count(product.id_kategori) as 'total',
 
-            category.id as 'id_cat',
-            category.name as 'name',
-            category.icon as 'icon'
+            kategori.id_kategori as 'id_cat',
+            kategori.nama_kategori as 'name',
+            kategori.icon_kategori as 'icon'
 
-            FROM product, category
-            WHERE product.id_category = category.id
-            GROUP BY category.id";
+            FROM product, kategori
+            WHERE product.id_kategori = kategori.id_kategori
+            GROUP BY kategori.id_kategori";
             $resultstock = $connection->query($querystock);
             if ($resultstock->num_rows > 0) {
               while($rowstock = $resultstock->fetch_assoc()) {
@@ -52,7 +52,7 @@ if ($_SESSION['role'] !== 'admin') {
            <div class="col s12 m4">
              <div class="card hoverable animated slideInUp wow">
                <div class="card-image">
-                 <a href="productstock.php?id=<?= $id_cat; ?>&category=<?= $name; ?>&icon=<?= $icon; ?>">
+                 <a href="productstock.php?id_kategori=<?= $id_cat; ?>&category=<?= $name; ?>&icon=<?= $icon; ?>">
                    <img src="src/img/<?= $icon; ?>.png" alt=""></a>
                  <span class="card-title blue-text"><?= $name; ?>s</span>
                </div>

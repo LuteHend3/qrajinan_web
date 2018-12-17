@@ -32,20 +32,20 @@ if ($_SESSION['role'] !== 'admin') {
 
          $queryfirst = "SELECT
 
-        product.id as 'id',
-        product.id_category,
+        product.id_product as 'id',
+        product.id_kategori,
 
-         SUM(command.quantity) as 'total',
-         command.statut,
-         command.id_produit,
+         SUM(transaksi.kuantitas_transaksi) as 'total',
+         transaksi.status_transaksi,
+         transaksi.id_produit,
 
-         category.name as 'name',
-         category.id
+         kategori.nama_kategori as 'name',
+         kategori.id_kategori
 
-         FROM product, command, category
-         WHERE product.id = command.id_produit
-         AND command.statut = 'paid' AND category.id = product.id_category
-         GROUP BY category.id";
+         FROM product, transaksi, kategori
+         WHERE product.id_product = transaksi.id_produit
+         AND transaksi.status_transaksi = 'paid' AND kategori.id_kategori = product.id_kategori
+         GROUP BY kategori.id_kategori";
          $resultfirst = $connection->query($queryfirst);
          if ($resultfirst->num_rows > 0) {
            // output data of each row
@@ -61,7 +61,7 @@ if ($_SESSION['role'] !== 'admin') {
                   <div class="col s2">
                     <p class="black-text"><?= $name_best; ?></p>
                     <div class="card red<?= $idp; ?>" style="padding-top:<?=number_format((float)$percent, 2, '.', ''); ?>%">
-                       <h5 class="white-text"><?=number_format((float)$percent, 2, '.', '');  ?>%</h5>
+                       <h5 class="black-text"><?=number_format((float)$percent, 2, '.', '');  ?>%</h5>
                     </div>
                   </div>
 

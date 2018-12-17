@@ -29,7 +29,7 @@
          <div class="footer-copyright">
            <div class="container">
            © <?= Date('Y'); ?> All rights reserved
-           <a class="grey-text text-lighten-4 right animated slideInUp wow" href="http://smakosh.com">Made with <i class="fa fa-heartbeat animated pulse infinite red-text"></i> By Ismail Ghallou</a>
+           <a class="grey-text text-lighten-4 right animated slideInUp wow" href="http://smakosh.com">Made with <i class="fa fa-heartbeat animated pulse infinite red-text"></i> By PT. SANS</a>
            </div>
          </div>
        </footer>

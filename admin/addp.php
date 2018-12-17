@@ -3,14 +3,14 @@
 session_start();
 
 error_reporting(0);
-if(!isset($_GET['id']) && !isset($_GET['category']) && !isset($_GET['icon'])){
+if(!isset($_GET['id_kategori']) && !isset($_GET['kategori']) && !isset($_GET['icon_kategori'])){
 header('Location: index');
 }
 
 else {
-$id_category =$_GET['id'];
-$name_category =$_GET['category'];
-$caticon =$_GET['icon'];
+$id_category =$_GET['id_kategori'];
+$name_category =$_GET['nama_kategori'];
+$caticon =$_GET['icon_kategori'];
 require 'includes/header.php';
 require 'includes/navconnected.php'; } ?>
 
@@ -49,6 +49,12 @@ require 'includes/navconnected.php'; } ?>
           <i class="prefix fa fa-usd"></i>
           <input id="icon_prefix" type="number" class="validate" name="price">
           <label for="icon_prefix">Price</label>
+        </div>
+
+                <div class="input-field col s6">
+          <i class="prefix fa fa-archive"></i>
+          <input id="icon_prefix" type="number" class="validate" name="stock_barang">
+          <label for="icon_prefix">Stock</label>
         </div>
 
         <div class="input-field col s12">
@@ -108,3 +114,4 @@ require 'includes/navconnected.php'; } ?>
 </div>
 
 <?php require 'includes/footer.php'; ?>
+

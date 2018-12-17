@@ -3,10 +3,10 @@ session_start();
 
   include_once '../db.php';
 
-if (isset($_GET['id'])) {
-   $id=$_GET['id'];
+if (isset($_GET['id_product'])) {
+   $id=$_GET['id_product'];
 
-   $query_delete = "DELETE FROM product WHERE id = '$id'";
+   $query_delete = "DELETE FROM product WHERE id_product = '$id'";
    $result_delete = $connection->query($query_delete);
 
 

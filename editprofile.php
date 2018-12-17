@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged_in'])) {
 }
 
 else {
-  $sessid = $_SESSION['id'];
+  $sessid = $_SESSION['id_user'];
 }
  require 'includes/header.php';
  require 'includes/navconnected.php'; //require $nav;?>

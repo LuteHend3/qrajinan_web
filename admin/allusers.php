@@ -28,8 +28,6 @@ if ($_SESSION['role'] !== 'admin') {
           <tr>
               <th data-field="lastname">Full name</th>
               <th data-field="email">email</th>
-              <th data-field="city">city</th>
-              <th data-field="country">country</th>
               <th data-field="address">address</th>
               <th data-field="delete">Delete</th>
           </tr>
@@ -39,26 +37,22 @@ if ($_SESSION['role'] !== 'admin') {
           include '../db.php';
 
                   //get users
-                  $queryuser = "SELECT id, email, firstname, lastname, address, city, country  FROM users WHERE role = 'client'";
+                  $queryuser = "SELECT id_user, email, firstname, lastname, address FROM users WHERE role = 'client'";
                   $resultuser = $connection->query($queryuser);
                   if ($resultuser->num_rows > 0) {
                     // output data of each row
                     while($rowuser = $resultuser->fetch_assoc()) {
-                      $id_user = $rowuser['id'];
+                      $id_user = $rowuser['id_user'];
                       $firstname = $rowuser['firstname'];
                       $lasttname = $rowuser['lastname'];
                       $email = $rowuser['email'];
-                      $city = $rowuser['city'];
-                      $country = $rowuser['country'];
                       $address = $rowuser['address'];
               ?>
               <tr>
                 <td><?php echo" $firstname "." $lasttname"; ?></td>
                 <td><?= $email; ?></td>
-                <td><?= $country; ?></td>
-                <td><?= $country; ?></td>
                 <td><?= $address; ?></td>
-                <td><a href="deleteuser.php?id=<?= $id_user; ?>"><i class="material-icons red-text">close</i></a></td>
+                <td><a href="deleteuser.php?id_user=<?= $id_user; ?>"><i class="material-icons red-text">close</i></a></td>
               </tr>
               <?php }}  ?>
             </tbody>

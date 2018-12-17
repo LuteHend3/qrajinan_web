@@ -111,7 +111,7 @@ function get_last_id(){
 		$result = $stmt->get_result();
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {
-			    $last = $row["id"];
+			    $last = $row["id_product"];
 			}
 			return $last;
 		}else{
@@ -125,13 +125,14 @@ require 'includes/pictures.php';
 
   $name = $_POST['name'];
   $price = $_POST['price'];
+  $stok = $_POST['stock_barang'];
   $description = addslashes($_POST['description']);
   $img_title=$_FILES["thumbnail"]["name"];
 
 
   //adding product
-  $queryaddproduct = "INSERT INTO product(id_category, name, description, price, id_picture, thumbnail)
-  VALUES ('$id_category', '$name', '$description','$price', '$idproduct', '$img_title')";
+  $queryaddproduct = "INSERT INTO product(id_kategori, nama_product, deskripsi_product, harga_produk, stok_barang, id_picture, thumbnail)
+  VALUES ('$id_category', '$name', '$description','$price', '$stok', '$idproduct', '$img_title')";
 
 if ($connection->query($queryaddproduct) === TRUE ) {
           echo "<div class='center-align'>

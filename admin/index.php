@@ -76,7 +76,7 @@ if ($_SESSION['role'] !== 'admin') {
 
             include '../db.php';
             //get total users
-            $queryusers = "SELECT count(id) as total FROM users";
+            $queryusers = "SELECT count(id_user) as total FROM users";
             $resultusers = $connection->query($queryusers);
 
             if($resultusers->num_rows > 0) {
@@ -86,7 +86,7 @@ if ($_SESSION['role'] !== 'admin') {
             }
 
             //get total ordered commands
-            $queryorder = "SELECT count(id) as total, statut FROM command WHERE statut = 'ordered'";
+            $queryorder = "SELECT count(id_transaksi) as total, status_transaksi FROM transaksi WHERE status_transaksi = 'ordered'";
             $resultorder = $connection->query($queryorder);
 
             if($resultorder->num_rows > 0) {
@@ -96,7 +96,7 @@ if ($_SESSION['role'] !== 'admin') {
             }
 
             //get total paid commands
-            $querypaid = "SELECT count(id) as total, statut FROM command WHERE statut = 'paid'";
+            $querypaid = "SELECT count(id_transaksi) as total, status_transaksi FROM transaksi WHERE status_transaksi = 'paid'";
             $resultpaid = $connection->query($querypaid);
 
             if($resultorder->num_rows > 0) {

@@ -2,7 +2,7 @@
 $server  = 'localhost'; 
 $username  = 'root'; 
 $password  = ''; 
-$database  = 'qrajinandb'; 
+$database  = 'shopsmart'; 
 
 $koneksi = mysqli_connect($server,$username,$password) or die("Koneksi Gagal");
 

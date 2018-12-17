@@ -12,7 +12,7 @@ if (!isset($_SESSION['logged_in'])) {
 }
 else {
   $nav ='includes/navconnected.php';
-  $idsess = $_SESSION['id'];
+  $idsess = $_SESSION['id_user'];
   if (!isset($_GET['search'])) {
     header('Location: index');
   }
@@ -50,7 +50,7 @@ else {
 
        $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
 
-       $queryproduct = "SELECT SQL_CALC_FOUND_ROWS id, name, price, id_picture, thumbnail FROM product WHERE name LIKE '%{$word}%' ORDER BY id DESC LIMIT {$start}, 16";
+       $queryproduct = "SELECT SQL_CALC_FOUND_ROWS id_product, nama_product, harga_produk, id_picture, thumbnail FROM product WHERE nama_product LIKE '%{$word}%' ORDER BY id_product DESC LIMIT {$start}, 16";
        $result = $connection->query($queryproduct);
 
        //pages
@@ -60,9 +60,9 @@ else {
          if ($result->num_rows > 0) {
          // output data of each row
          while($rowproduct = $result->fetch_assoc()) {
-           $id_product = $rowproduct['id'];
-           $name_product = $rowproduct['name'];
-           $price_product = $rowproduct['price'];
+           $id_product = $rowproduct['id_product'];
+           $name_product = $rowproduct['nama_product'];
+           $price_product = $rowproduct['harga_produk'];
            $id_pic = $rowproduct['id_picture'];
            $thumbnail_product = $rowproduct['thumbnail'];
 

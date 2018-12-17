@@ -3,7 +3,7 @@ $name = $_POST['name'];
 $password=md5($_POST['pass']);
 include 'db.php';
 $name=mysqli_real_escape_string($connection, $name);
-$query = "SELECT * FROM users WHERE username='{$name}' and password = '{$password}'";
+$query = "SELECT * FROM users WHERE username='$name' and password = '$password'";
 $select_user_query = mysqli_query($connection, $query);
 if (!$select_user_query) {
 DIE("QUERY FAILED". mysqli_error($connection));

@@ -5,14 +5,14 @@ session_start();
 
 if (isset($_GET['id'])) {
    $id=$_GET['id'];
-   $idsess = $_SESSION['id'];
+   $idsess = $_SESSION['id_user'];
 
-   $query_delete = "DELETE FROM command WHERE id_user = '$idsess' AND id_produit = '$id' AND statut != 'paid'";
+   $query_delete = "DELETE FROM transaksi WHERE id = '$id'";
    $result_delete = $connection->query($query_delete);
 
    $_SESSION['item'] -= 1;
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+header('Location:cart');
 }
 
 else {

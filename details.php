@@ -6,7 +6,7 @@
  }
 
 else {
- $idsess = $_SESSION['id'];
+ $idsess = $_SESSION['id_user'];
 }
  require 'includes/header.php';
  ?>
@@ -19,8 +19,6 @@ else {
             <th data-field="category">quantity</th>
             <th data-field="price">price</th>
             <th data-field="quantity">user</th>
-            <th data-field="country">country</th>
-            <th data-field="city">city</th>
             <th data-field="address">address</th>
         </tr>
       </thead>
@@ -28,20 +26,18 @@ else {
         <?php
          include 'db.php';
         //get detailss
-        $querydetails = "SELECT * FROM details_command WHERE id_user = '$idsess' AND statut ='ready'";
+        $querydetails = "SELECT * FROM details_transaksi WHERE id_user = '$idsess' AND status_transaksi ='ready'";
         $result = $connection->query($querydetails);
         if ($result->num_rows > 0) {
         // output data of each row
         while($rowdetails = $result->fetch_assoc()) {
-          $id_details = $rowdetails['id'];
+          $id_details = $rowdetails['id_detail_transaksi'];
           $product_details = $rowdetails['product'];
-          $quantity_details = $rowdetails['quantity'];
-          $price_details = $rowdetails['price'];
+          $quantity_details = $rowdetails['kuantitas_transaksi'];
+          $price_details = $rowdetails['harga_transaksi'];
           $user_details = $rowdetails['user'];
-          $country_details = $rowdetails['country'];
-          $city_details = $rowdetails['city'];
           $address_details = $rowdetails['address'];
-          $idcmdd = $rowdetails['id_command'];
+          $idtrskk = $rowdetails['id_transaksi'];
 
           ?>
         <tr>
@@ -49,26 +45,24 @@ else {
           <td><?= $quantity_details; ?></td>
           <td>$ <?= $price_details; ?></td>
           <td><?= $user_details; ?></td>
-          <td><?= $country_details; ?></td>
-          <td><?= $city_details; ?></td>
           <td><?= $address_details; ?></td>
         </tr>
       <?php }} ?>
       <div class="left-align">
         <?php
 
-        $querycmd = "SELECT id FROM command WHERE id = '$idcmdd'";
+        $querycmd = "SELECT id_transaksi FROM transaksi WHERE id_transaksi = '$idtrskk'";
         $getid = mysqli_query($connection, $querycmd);
         $rowcmd = mysqli_fetch_array($getid);
-        $idcmd = $rowcmd['id'];
+        $idtrsk = $rowcmd['id_transaksi'];
 
         ?>
-        <h5>Invoice #<?= $idcmd; ?></h5>
+        <h5>Invoice #<?= $idtrsk; ?></h5>
       </div>
       </tbody>
     </table>
     <div class="right-align">
-      <p>Thank you for trusting us © Smartshop Inc <?= date('Y'); ?></p>
+      <p>Thank you for trusting us © Qrajinan Corp <?= date('Y'); ?></p>
     </div>
 
     <form method="post">
@@ -81,7 +75,7 @@ else {
 
 
 
-          $queryupdate = "UPDATE details_command SET statut = 'done' WHERE id_user = '$idsess' AND statut = 'ready'";
+          $queryupdate = "UPDATE details_transaksi SET status_transaksi = 'done' WHERE id_user = '$idsess' AND status_transaksi = 'ready'";
           $queryupdate = mysqli_query($connection, $queryupdate);
 
           echo "<meta http-equiv='refresh' content='0;url=index' />";

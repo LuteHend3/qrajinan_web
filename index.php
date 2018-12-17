@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged_in'])) {
 }
 else {
   $nav ='includes/navconnected.php';
-  $idsess = $_SESSION['id'];
+  $idsess = $_SESSION['id_user'];
 }
 require 'includes/header.php';
 require $nav; ?>
@@ -41,23 +41,23 @@ require $nav; ?>
   <div class="row">
     <?php
 
-     include 'db.php';
+    include 'db.php';
 
     $queryfirst = "SELECT
 
-   product.id as 'id',
-   product.name as 'name',
-   product.price as 'price',
+   product.id_product as 'id',
+   product.nama_product as 'name',
+   product.harga_produk as 'price',
    product.thumbnail as 'thumbnail',
 
-    SUM(command.quantity) as 'total',
-    command.statut,
-    command.id_produit
+    SUM(transaksi.kuantitas_transaksi) as 'total',
+    transaksi.status_transaksi,
+    transaksi.id_produit
 
-    FROM product, command
-    WHERE product.id = command.id_produit AND command.statut = 'paid'
-    GROUP BY product.id
-    ORDER BY SUM(command.quantity) DESC LIMIT 3";
+    FROM product, transaksi
+    WHERE product.id_product = transaksi.id_produit AND transaksi.status_transaksi = 'paid'
+    GROUP BY product.id_product
+    ORDER BY SUM(transaksi.kuantitas_transaksi) DESC LIMIT 3";
     $resultfirst = $connection->query($queryfirst);
     if ($resultfirst->num_rows > 0) {
       // output data of each row
@@ -76,7 +76,7 @@ require $nav; ?>
                 <div class="card-image">
                   <a href="product.php?id=<?= $id_best;  ?>"><img src="products/<?= $thumbnail_best; ?>"></a>
                   <span class="card-title red-text"><?= $name_best; ?></span>
-                  <a href="product.php?id=<?= $id_best; ?>" class="btn-floating red halfway-fab waves-effect waves-light right"><i class="material-icons">add</i></a>
+                  <a href="product.php?id_product=<?= $id_best; ?>" class="btn-floating red halfway-fab waves-effect waves-light right"><i class="material-icons">add</i></a>
                 </div>
                   <div class="card-content">
                     <div class="container">
@@ -107,21 +107,22 @@ require $nav; ?>
                 <?php
 
                 //get categories
-                $querycategory = "SELECT id, name, icon  FROM category";
+                $querycategory = "SELECT id_kategori, nama_kategori, icon_kategori  FROM kategori";
                 $total = $connection->query($querycategory);
                 if ($total->num_rows > 0) {
                   // output data of each row
                   while($rowcategory = $total->fetch_assoc()) {
-                    $id_category = $rowcategory['id'];
-                    $name_category = $rowcategory['name'];
-                    $icon_category = $rowcategory['icon'];
+                    $id_category = $rowcategory['id_kategori'];
+                    $name_category = $rowcategory['nama_kategori'];
+                    $icon_category = $rowcategory['icon_kategori'];
 
                     ?>
+
 
                     <div class="col s12 m4">
                       <div class="card hoverable animated slideInUp wow">
                         <div class="card-image">
-                          <a href="category.php?id=<?= $id_category; ?>"><img src="src/img/<?= $icon_category; ?>.png" alt=""></a>
+                          <a href="category.php?id_kategori=<?= $id_category; ?>"><img src="src/img/<?= $icon_category; ?>.png" alt=""></a>
                           <span class="card-title black-text"><?= $name_category; ?></span>
                         </div>
                       </div>
