@@ -45,12 +45,12 @@ new WOW().init();
 
 $(function(){
      $(".searching").typed({
-       strings: ["Gopro hero 5",
-       "Apple watch",
-       "DJI Mavic Pro",
-      "MSI GP 62",
-     "Macbook pro retina 2015",
-    "Google Pixel XL",],
+       strings: ["Kain Batik",
+       "Aksesoris",
+       "Tas dan dompet",
+      "Sepatu dan sandal",
+     "Outwear",
+    "Miniatur",],
        typeSpeed: -8
      });
  });

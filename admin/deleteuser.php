@@ -11,8 +11,13 @@ if (isset($_GET['id_user'])) {
 
    $query_delete2 = "DELETE FROM transaksi WHERE id_user = '$id'";
    $result_delete2 = $connection->query($query_delete2);
-
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+   ?>
+    <script type="text/javascript">
+        alert('Anda Berhasil Menghapus User!');
+        window.location='allusers.php';
+      </script>
+      <?php
+//header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
 else {

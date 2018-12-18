@@ -86,7 +86,7 @@ $id_product =$_GET['id'];
        <div class="divider"></div>
        <div class="stuff">
         <h3 class="woow">Price</h3>
-        <h5>$ <?= $price_product; ?></h5>
+        <h5>Rp <?= $price_product; ?></h5>
            <p><?= $description; ?></p>
           <div class="input-field col s12">
             <i class="material-icons prefix">shopping_basket</i>
@@ -109,7 +109,7 @@ $id_product =$_GET['id'];
               //inserting into transaksi
               include 'db.php';
 
-              $querybuy = "INSERT INTO transaksi(id_produit, kuantitas_transaksi, status_transaksi, id_user)
+              $querybuy = "INSERT INTO transaksi(id_product, kuantitas_transaksi, status_transaksi, id_user)
               VALUES ('$id_productdb','$quantity','ordered', '$idsess')";
 
                if ($quantity > $stok_barang) {
@@ -118,7 +118,8 @@ $id_product =$_GET['id'];
                 alert("Jumlah barang yang mau di pesan melebihi stok!!");
               </script>
               <?php
-            }
+            } 
+
             elseif ($connection->query($querybuy) === TRUE) {
                      $_SESSION['item'] += 1;
 

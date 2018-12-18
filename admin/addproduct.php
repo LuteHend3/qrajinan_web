@@ -17,8 +17,8 @@ require 'includes/navconnected.php';
     <nav>
       <div class="nav-wrapper">
         <div class="col s12">
-          <a href="index" class="breadcrumb">Dashboard</a>
-          <a href="infoproduct" class="breadcrumb">Managemen Products</a>
+          <a href="index" class="breadcrumb">Qrajinan</a>
+          <a href="infoproduct" class="breadcrumb">Produk</a>
           <a href="addproduct" class="breadcrumb">Add product</a>
         </div>
       </div>

@@ -16,7 +16,7 @@ $category = $_GET['id_kategori'];
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
+            <a href="index" class="breadcrumb">Qrajinan</a>
             <a href="products" class="breadcrumb">Stock</a>
             <a href="productstock" class="breadcrumb">Products</a>
           </div>
@@ -36,6 +36,7 @@ $category = $_GET['id_kategori'];
                $id_product = $rows['id_product'];
                $nama_product = $rows['nama_product'];
                $thumbnail = $rows['thumbnail'];
+               $stok = $rows['stok_barang'];
                $price = $rows['harga_produk'];
 
            ?>
@@ -43,11 +44,13 @@ $category = $_GET['id_kategori'];
              <div class="card hoverable animated slideInUp wow">
                <div class="card-image">
                      <img src="../products/<?= $thumbnail; ?>">
-                   <span class="card-title grey-text"><?= $nama_product; ?></span>
+                   <span class="card-title black-text"><?= $nama_product; ?></span>
                  </div>
                  <div class="card-content">
-                      <h5 class="white-text">$ <?= $price; ?></h5>
-                      <a class="blue-text" href="deleteproduct.php?id_product=<?= $id_product;?>">Delete</a>
+                      <h5 class="white-text">Rp. <?= $price; ?></h5>
+                      <h6 class="white-text">Stock left <?= $stok; ?></h6>
+                      <a class="blue-text" href="deleteproduct.php?id_product=<?= $id_product;?>">Delete</a> |
+                       <a class="blue-text" href="addstckproduct.php?id_product=<?= $id_product;?>">Add Stock</a>
                  </div>
              </div>
            </div>

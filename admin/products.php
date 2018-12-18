@@ -14,7 +14,7 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
+            <a href="index" class="breadcrumb">Qrajinan</a>
             <a href="products" class="breadcrumb">Stock</a>
           </div>
         </div>
@@ -54,7 +54,7 @@ if ($_SESSION['role'] !== 'admin') {
                <div class="card-image">
                  <a href="productstock.php?id_kategori=<?= $id_cat; ?>&category=<?= $name; ?>&icon=<?= $icon; ?>">
                    <img src="src/img/<?= $icon; ?>.png" alt=""></a>
-                 <span class="card-title blue-text"><?= $name; ?>s</span>
+                 <span class="card-title blue-text"><?= $name; ?></span>
                </div>
                <div class="card-content">
                  <h5 class="white-text"><?= $total; ?></h5>

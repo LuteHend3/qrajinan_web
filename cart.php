@@ -46,16 +46,17 @@ else {
           //get products
           $queryproduct = "SELECT product.nama_product as 'name',
           product.id_product as 'id', product.harga_produk as 'price',
-          kategori.nama_kategori as 'category', transaksi.id_user, transaksi.status_transaksi, 
+          kategori.nama_kategori as 'category',transaksi.id_transaksi as 'id_transaksi', transaksi.id_user, transaksi.status_transaksi, 
           transaksi.tgl_transaksi as 'tgl_trans', 
           transaksi.kuantitas_transaksi as 'quantity'
 FROM kategori, product, transaksi
-WHERE transaksi.id_produit = product.id_product AND product.id_kategori = kategori.id_kategori AND transaksi.status_transaksi = 'ordered'";
+WHERE transaksi.id_product = product.id_product AND product.id_kategori = kategori.id_kategori AND transaksi.status_transaksi = 'ordered'";
           $result1 = $connection->query($queryproduct);
           if ($result1->num_rows > 0) {
           // output data of each row
           while($rowproduct = $result1->fetch_assoc()) {
             $id_productdb = $rowproduct['id'];
+            $id_transaksi = $rowproduct['id_transaksi'];
             $name_product = $rowproduct['name'];
             $category_product = $rowproduct['category'];
             $quantity_product = $rowproduct['quantity'];
@@ -70,7 +71,7 @@ WHERE transaksi.id_produit = product.id_product AND product.id_kategori = katego
             <td><?= $quantity_product; ?></td>
             <td><?= $tgl; ?></td>
             <td><?= $price_product*$quantity_product; ?></td>
-            <td><a href="deletetransaksi.php?id=<?php echo $rowproduct['id']; ?>"><i class="material-icons red-text">close</i></a></td>
+            <td><a href="deletetransaksi.php?id=<?php echo $rowproduct['id_transaksi']; ?>"><i class="material-icons red-text">close</i></a></td>
           </tr>
         <?php }}?>
         </tbody>

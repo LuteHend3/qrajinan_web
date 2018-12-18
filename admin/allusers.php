@@ -14,7 +14,7 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
+            <a href="index" class="breadcrumb">Qrajinan</a>
             <a href="users" class="breadcrumb">Users</a>
           </div>
         </div>
@@ -24,12 +24,16 @@ if ($_SESSION['role'] !== 'admin') {
 
    <div class="container scroll">
      <table class="highlight striped">
+      <tr>
+      <a href="adduser.php"makeAdmin">Add an Admin</a>
+      </tr>
         <thead>
           <tr>
-              <th data-field="lastname">Full name</th>
-              <th data-field="email">email</th>
-              <th data-field="address">address</th>
-              <th data-field="delete">Delete</th>
+              <th data-field="lastname">Nama</th>
+              <th data-field="email">Email</th>
+              <th data-field="address">Alamat</th>
+              <th data-field="address">Role</th>
+              <th data-field="delete">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -37,7 +41,7 @@ if ($_SESSION['role'] !== 'admin') {
           include '../db.php';
 
                   //get users
-                  $queryuser = "SELECT id_user, email, firstname, lastname, address FROM users WHERE role = 'client'";
+                  $queryuser = "SELECT id_user, email, firstname, lastname, address, role FROM users";
                   $resultuser = $connection->query($queryuser);
                   if ($resultuser->num_rows > 0) {
                     // output data of each row
@@ -47,12 +51,18 @@ if ($_SESSION['role'] !== 'admin') {
                       $lasttname = $rowuser['lastname'];
                       $email = $rowuser['email'];
                       $address = $rowuser['address'];
+                      $role = $rowuser['role'];
+
+                     
               ?>
+
               <tr>
                 <td><?php echo" $firstname "." $lasttname"; ?></td>
                 <td><?= $email; ?></td>
                 <td><?= $address; ?></td>
-                <td><a href="deleteuser.php?id_user=<?= $id_user; ?>"><i class="material-icons red-text">close</i></a></td>
+                <td><?= $role; ?></td>
+                <td><a href="deleteuser.php?id_user=<?= $id_user; ?>"><i class="material-icons red-text">close</i></a>
+                </td>
               </tr>
               <?php }}  ?>
             </tbody>

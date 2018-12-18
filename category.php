@@ -95,7 +95,7 @@ $id_category =$_GET['id_kategori'];
                       </div>
                       <div class="card-action">
                         <div class="container-fluid">
-                          <h5 class="white-text"><?= $price_product; ?> $</h5>
+                          <h5 class="white-text">Rp <?= $price_product; ?></h5>
                         </div>
                       </div>
                   </div>

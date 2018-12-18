@@ -27,7 +27,7 @@ $user_role = $row['role'];
 
 if ($email !== $user_email && $password !== $user_password) {
 echo "<div class='center-align meh'>
-  <h5 class='red-text'>Wrong Info</h5>
+  <h5 class='red-text'>Email atau Password Salah!</h5>
 </div>";
 }
 
@@ -43,7 +43,7 @@ else{
     $_SESSION['email'] = $user_email;
     $_SESSION['role'] = 'admin';
     $_SESSION['logged_in']= 'True';
-    echo "<meta http-equiv='refresh' content='0;url=http://localhost/Qrajinan/admin/index' />";
+    echo "<meta http-equiv='refresh' content='0;url=http://localhost/Qrajinan/admin/index.php' />";
   }
 
     else {

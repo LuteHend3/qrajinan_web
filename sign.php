@@ -63,7 +63,7 @@ error_reporting(0);
 
         <div class="input-field col s12 ">
           <i class="material-icons prefix">location_on</i>
-          <textarea id="alamat_user" name="alamat_user" class="materialize-textarea validate"></textarea>
+          <textarea id="alamat_user" name="alamat_user" class="materialize-textarea validate" required=""></textarea>
           <label for="icon_prefix">Alamat</label>
         </div>
 
@@ -102,12 +102,12 @@ error_reporting(0);
 
            <div class="input-field col s12">
              <i class="material-icons prefix">email</i>
-             <input id="icon_prefix" type="email" name="emaillog" class="validate">
+             <input id="icon_prefix" type="email" name="emaillog" class="validate" required="">
              <label for="icon_prefix">Email</label>
            </div>
            <div class="input-field col s12 meh">
              <i class="material-icons prefix">lock</i>
-             <input id="icon_prefix" type="password" name="passworddb" class="validate">
+             <input id="icon_prefix" type="password" name="passworddb" class="validate" required="">
              <label for="icon_prefix">Password</label>
            </div>
 
@@ -126,52 +126,6 @@ error_reporting(0);
    </div>
   </div>
 </div>
- <script type="text/javascript">
-  function loadKabupaten() {
-   var id_provinsi = $('#provinsi').val();
-
-   $.ajax({
-    type: 'GET',
-    url: 'loadData.php',
-    data: "id_prov=" + id_provinsi,
-    success: function(data){
-     if(data.length > 0){
-      $('#kabupaten').html(data);
-     } else {
-      $('#kabupaten').html("<option>Pilih Kabupaten/Kota</option>");
-      $('#kecamatan').html("<option>Pilih Kecamatan</option>");
-      $('#kelurahan').html("<option>Pilih Kelurahan/Desa</option>");
-     }
-    }
-   });
-  }
-
-  function loadKecamatan() {
-   var id_kabupaten = $('#kabupaten').val();
-
-   $.ajax({
-    type: 'GET',
-    url: 'loadData.php',
-    data: "id_kabupaten=" + id_kabupaten,
-    success: function(data){
-     $('#kecamatan').html(data);
-    }
-   });
-  }
-
-  function loadKelurahan() {
-   var id_kecamatan = $('#kecamatan').val();
-
-   $.ajax({
-    type: 'GET',
-    url: 'loadData.php',
-    data: "id_kecamatan=" + id_kecamatan,
-    success: function(data){
-     $('#kelurahan').html(data);
-    }
-   });
-  }
- </script>
-
+ 
 
   <?php require 'includes/footer.php'; ?>

@@ -10,18 +10,18 @@
              <div class="col s12 l4 ">
                <ul>
                  <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="sign">Sign In</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="404">Advertise on Smartshop</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">SmartPhone</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">SmartCam</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="404">Ngiklan Di Qrajinan</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Batik</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Aksesoris</a></li>
                </ul>
              </div>
 
              <div class="col s12 l4 ">
                <ul>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">SmartLaptop</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">SmartWatch</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">SmartSpeaker</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">SmartVR</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Miniatur</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Alat musik</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Gift dan souvenirs</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Pakaian</a></li>
                </ul>
              </div>
            </div>
@@ -29,7 +29,7 @@
          <div class="footer-copyright">
            <div class="container">
            © <?= Date('Y'); ?> All rights reserved
-           <a class="grey-text text-lighten-4 right animated slideInUp wow" href="http://smakosh.com">Made with <i class="fa fa-heartbeat animated pulse infinite red-text"></i> By PT. SANS</a>
+           <a class="grey-text text-lighten-4 right animated slideInUp wow" href="http://instagram.com/qrajinanmarket.id">Made with <i class="fa fa-heartbeat animated pulse infinite red-text"></i> By PT. SANS</a>
            </div>
          </div>
        </footer>

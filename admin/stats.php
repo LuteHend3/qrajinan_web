@@ -14,9 +14,9 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
+            <a href="index" class="breadcrumb">Qrajinan</a>
             <a href="infoproduct" class="breadcrumb">Products</a>
-            <a href="stats" class="breadcrumb">stats</a>
+            <a href="stats" class="breadcrumb">Stats</a>
           </div>
         </div>
       </nav>
@@ -37,13 +37,13 @@ if ($_SESSION['role'] !== 'admin') {
 
          SUM(transaksi.kuantitas_transaksi) as 'total',
          transaksi.status_transaksi,
-         transaksi.id_produit,
+         transaksi.id_product,
 
          kategori.nama_kategori as 'name',
          kategori.id_kategori
 
          FROM product, transaksi, kategori
-         WHERE product.id_product = transaksi.id_produit
+         WHERE product.id_product = transaksi.id_product
          AND transaksi.status_transaksi = 'paid' AND kategori.id_kategori = product.id_kategori
          GROUP BY kategori.id_kategori";
          $resultfirst = $connection->query($queryfirst);

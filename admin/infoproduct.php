@@ -15,7 +15,7 @@ if ($_SESSION['role'] !== 'admin') {
         <div class="nav-wrapper">
           <div class="col s12">
             <a href="index" class="breadcrumb">Dashboard</a>
-              <a href="infoproduct" class="breadcrumb">Products</a>
+              <a href="infoproduct" class="breadcrumb">Produk</a>
           </div>
         </div>
       </nav>
@@ -30,7 +30,7 @@ if ($_SESSION['role'] !== 'admin') {
              <img src="src/img/add.png" alt="">
            </div>
            <div class="card-action">
-             <a class="blue-text" href="addproduct">Add Product</a>
+             <a class="blue-text" href="addproduct">Tambah Produk</a>
            </div>
          </div>
        </div>
@@ -41,7 +41,7 @@ if ($_SESSION['role'] !== 'admin') {
              <img src="src/img/stats.png" alt="">
            </div>
            <div class="card-action">
-             <a class="blue-text" href="stats">See Stats</a>
+             <a class="blue-text" href="stats">Status</a>
            </div>
          </div>
        </div>
@@ -52,7 +52,7 @@ if ($_SESSION['role'] !== 'admin') {
              <img src="src/img/edit.png" alt="">
            </div>
            <div class="card-action">
-             <a class="blue-text" href="editproduct">Commands</a>
+             <a class="blue-text" href="editproduct">Transaksi</a>
            </div>
          </div>
        </div>

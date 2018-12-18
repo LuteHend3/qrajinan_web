@@ -15,7 +15,7 @@
                        product.stok_barang as 'stock',
 
                        transaksi.id_transaksi as 'idtrsk',
-                       transaksi.id_produit,
+                       transaksi.id_product,
                        transaksi.kuantitas_transaksi as 'quantity',
                        transaksi.status_transaksi,
                        transaksi.id_user as 'iduser',
@@ -23,7 +23,7 @@
                        users.id_user
 
                        FROM product, transaksi, users
-                       WHERE product.id_product = transaksi.id_produit AND users.id_user = transaksi.id_user
+                       WHERE product.id_product = transaksi.id_product AND users.id_user = transaksi.id_user
                        AND transaksi.id_user = '{$_SESSION['id_user']}' AND transaksi.status_transaksi = 'ordered'";
     $resultcmd = $connection->query($querycmd);
     if($resultcmd->num_rows > 0){

@@ -9,21 +9,19 @@ else {
   $nav ='includes/navconnected.php';
   $idsess = $_SESSION['id_user'];
 }
+
+
 require 'includes/header.php';
 require $nav; ?>
-
-<button class="fixed-button wobble" onclick="window.location.href='cart'" type="button">
-  <i class="material-icons">shopping_cart</i>
-</button>
 
 <div class="container-fluid home" id="top">
   <div class="container search">
     <nav class="animated slideInUp wow">
       <div class="nav-wrapper">
-        <form method="GET" action="search.php">
+        <form method="GET" action="search.php" style="color: black;">
           <div class="input-field">
             <input id="search" class="searching" type="search" name='searched' required>
-            <label for="search"><i class="material-icons">search</i></label>
+            <label for="search"><i class="material-icons" style="color: black;">search</i></label>
             <i class="material-icons">close</i>
           </div>
 
@@ -36,12 +34,11 @@ require $nav; ?>
   </div>
 </div>
 
-
 <div class="container most">
   <div class="row">
     <?php
 
-    include 'db.php';
+     include 'db.php';
 
     $queryfirst = "SELECT
 
@@ -52,10 +49,10 @@ require $nav; ?>
 
     SUM(transaksi.kuantitas_transaksi) as 'total',
     transaksi.status_transaksi,
-    transaksi.id_produit
+    transaksi.id_product
 
     FROM product, transaksi
-    WHERE product.id_product = transaksi.id_produit AND transaksi.status_transaksi = 'paid'
+    WHERE product.id_product = transaksi.id_product AND transaksi.status_transaksi = 'paid'
     GROUP BY product.id_product
     ORDER BY SUM(transaksi.kuantitas_transaksi) DESC LIMIT 3";
     $resultfirst = $connection->query($queryfirst);
@@ -75,14 +72,14 @@ require $nav; ?>
               <div class="card hoverable animated slideInUp wow">
                 <div class="card-image">
                   <a href="product.php?id=<?= $id_best;  ?>"><img src="products/<?= $thumbnail_best; ?>"></a>
-                  <span class="card-title red-text"><?= $name_best; ?></span>
+                  <span class="card-title black-text"><?= $name_best; ?></span>
                   <a href="product.php?id_product=<?= $id_best; ?>" class="btn-floating red halfway-fab waves-effect waves-light right"><i class="material-icons">add</i></a>
                 </div>
                   <div class="card-content">
                     <div class="container">
                       <div class="row">
                         <div class="col s6">
-                          <p class="white-text"><i class="left fa fa-dollar"></i> <?= $price_best; ?></p>
+                          <p class="white-text">Rp <?= $price_best; ?></p>
                         </div>
                         <div class="col s6">
                           <p class="white-text"><i class="left fa fa-shopping-basket"></i> <?= $totalsold; ?></p>
@@ -118,7 +115,6 @@ require $nav; ?>
 
                     ?>
 
-
                     <div class="col s12 m4">
                       <div class="card hoverable animated slideInUp wow">
                         <div class="card-image">
@@ -140,7 +136,7 @@ require $nav; ?>
                     <div class="col s12 m6">
                       <div class="card animated slideInUp wow">
                         <div class="card-image">
-                          <img src="src/img/about.jpg" alt="">
+                          <img src="src/img/q.png" alt="">
                         </div>
                       </div>
                     </div>
@@ -148,19 +144,14 @@ require $nav; ?>
                     <div class="col s12 m6">
                       <h3 class="animated slideInUp wow">About Us</h3>
                       <div class="divider animated slideInUp wow"></div>
-                      <p class="animated slideInUp wow">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.</p>
+                      <p class="animated slideInUp wow">Be the Best Marketplace for our traditional handmade.</p>
                       </div>
 
                     </div>
                   </div>
                 </div>
 
-                <div class="container contact" id="contact">
+                <!--<div class="container contact" id="contact">
                   <div class="row">
                     <form class="col s12 animated slideInUp wow">
                       <div class="row">
@@ -189,7 +180,7 @@ require $nav; ?>
                       </div>
                     </form>
                   </div>
-                </div>
+                </div> -->
 
                 <?php
                 require 'includes/secondfooter.php';

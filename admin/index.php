@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
-  header('Location: ../index');
+  header('Location: ../index.php');
 }
 
  require 'includes/header.php';
@@ -14,8 +14,8 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="../index" class="breadcrumb">Smartshop</a>
-            <a href="index" class="breadcrumb">Dashboard</a>
+            <a href="#" class="breadcrumb">Qrajinan</a>
+            <a href="index.php" class="breadcrumb">Dashboard</a>
           </div>
         </div>
       </nav>
@@ -26,15 +26,12 @@ if ($_SESSION['role'] !== 'admin') {
   <div class="row">
          <div class="col s12 m4">
            <div class="card horizontal">
-             <div class="card-image">
-               <img src="src/img/pixel.png" alt="" />
-             </div>
              <div class="card-stacked">
               <div class="card-content">
-                <p>Products & Commands</p>
+                <p>Produk</p>
               </div>
                <div class="card-action">
-                 <a href="infoproduct" class="blue-text">Learn more</a>
+                 <a href="infoproduct.php" class="blue-text">Lihat selengkapnya</a>
                </div>
              </div>
            </div>
@@ -42,15 +39,12 @@ if ($_SESSION['role'] !== 'admin') {
 
          <div class="col s12 m4">
            <div class="card horizontal">
-             <div class="card-image">
-               <img src="src/img/cat.png" alt="" />
-             </div>
              <div class="card-stacked">
         <div class="card-content">
-          <p>Stock</p>
+          <p>Stok</p>
         </div>
              <div class="card-action">
-               <a href="products" class="blue-text">Learn more</a>
+               <a href="products.php" class="blue-text">Lihat selengkapnya</a>
              </div>
              </div>
 
@@ -59,15 +53,12 @@ if ($_SESSION['role'] !== 'admin') {
 
          <div class="col s12 m4">
            <div class="card horizontal">
-             <div class="card-image">
-               <img src="src/img/user.png" alt="" />
-             </div>
              <div class="card-stacked">
               <div class="card-content">
                 <p>Users</p>
               </div>
                <div class="card-action">
-                 <a href="allusers" class="blue-text">Learn more</a>
+                 <a href="allusers.php" class="blue-text">Lihat selengkapnya</a>
                </div>
              </div>
            </div>

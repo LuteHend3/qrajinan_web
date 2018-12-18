@@ -26,7 +26,7 @@ if ($connection->query($query) === TRUE) {
       ?>
       <script type="text/javascript">
         alert('Akun Anda Telah Terdaftar, Silahkan Login!');
-        window.location='sign';
+        window.location='sign.php';
       </script>
       <?php
 

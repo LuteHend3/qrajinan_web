@@ -19,7 +19,7 @@ require 'includes/navconnected.php'; } ?>
     <nav>
       <div class="nav-wrapper">
         <div class="col s12">
-          <a href="index" class="breadcrumb">Dashboard</a>
+          <a href="index" class="breadcrumb">Qrajinan</a>
           <a href="addproduct" class="breadcrumb"><?= $name_category; ?></a>
         </div>
       </div>
@@ -41,25 +41,24 @@ require 'includes/navconnected.php'; } ?>
       <div class="row">
         <div class="input-field col s6">
           <i class="fa fa-product-hunt prefix"></i>
-          <input id="icon_prefix" type="text" class="validate" name="name">
+          <input id="icon_prefix" type="text" class="validate" name="name" required="">
           <label for="icon_prefix">Item name</label>
         </div>
 
         <div class="input-field col s6">
-          <i class="prefix fa fa-usd"></i>
-          <input id="icon_prefix" type="number" class="validate" name="price">
+          <input id="icon_prefix" type="number" class="validate" name="price" required="">
           <label for="icon_prefix">Price</label>
         </div>
 
                 <div class="input-field col s6">
           <i class="prefix fa fa-archive"></i>
-          <input id="icon_prefix" type="number" class="validate" name="stock_barang">
+          <input id="icon_prefix" type="number" class="validate" name="stock_barang" required="">
           <label for="icon_prefix">Stock</label>
         </div>
 
         <div class="input-field col s12">
           <i class="material-icons prefix">mode_edit</i>
-          <textarea id="icon_prefix2" class="materialize-textarea" name="description"></textarea>
+          <textarea id="icon_prefix2" class="materialize-textarea" name="description" required=""></textarea>
           <label for="icon_prefix2">Description</label>
         </div>
 
@@ -69,7 +68,7 @@ require 'includes/navconnected.php'; } ?>
             <input type="file" name="thumbnail">
           </div>
           <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" name="thumbnail">
+            <input class="file-path validate" type="text" name="thumbnail" required="">
           </div>
         </div>
 
@@ -79,7 +78,7 @@ require 'includes/navconnected.php'; } ?>
             <input type="file" name="picture1">
           </div>
           <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" name="picture1">
+            <input class="file-path validate" type="text" name="picture1" required="">
           </div>
         </div>
 
@@ -89,7 +88,7 @@ require 'includes/navconnected.php'; } ?>
             <input type="file" name="picture2">
           </div>
           <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" name="picture2">
+            <input class="file-path validate" type="text" name="picture2" required="">
           </div>
         </div>
 
@@ -99,7 +98,7 @@ require 'includes/navconnected.php'; } ?>
             <input type="file" name="picture3">
           </div>
           <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" name="picture3">
+            <input class="file-path validate" type="text" name="picture3" required="">
           </div>
         </div>
       </div>
