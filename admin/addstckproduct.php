@@ -54,25 +54,22 @@ else {
      }
      ?>
             <?php
-
-             if (isset($_POST['update'])) {
-
-                 $querystok = "SELECT * FROM product";
+              
+        $querystok = ("SELECT * FROM product WHERE id_product = ".$id);
                   $resultstok = $connection->query($querystok);
-                  if ($resultstok->num_rows > 0) {
-                    // output data of each row
-                    while($rowstok = $resultstok->fetch_assoc()) {
-                      $stok_barang = $rowstok['stok_barang'];
+                  $row = $resultstok->fetch_object();
+             if (isset($_POST['update'])) {
+              $oldstok = $_POST['stock_barang'];
+              $newstok = ($row->stok_barang + $oldstok);
+              //$sql = "UPDATE product SET stok_barang = '".$newstok."' WHERE id_product = ".$id;
+                   
 
 
-               $newname = $_POST['name'];
+             $newname = $_POST['name'];
                $oldstok = $_POST['stock_barang'];
-              $newstok = $stok_barang + $oldstok;
-}
-}
-              include '../db.php';
+           include '../db.php';
               // update info on users Toble
-              $queryupdate = "UPDATE product SET nama_product ='$newname', stok_barang ='$newstok' WHERE id_product='$id'";
+              $queryupdate = "UPDATE product SET stok_barang = '".$newstok."' WHERE id_product = ".$id;
               //$result = $connection->query($queryupdate);
 
               //echo "<meta http-equiv='refresh' content='0'; url='index' />";
