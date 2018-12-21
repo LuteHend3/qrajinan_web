@@ -4,15 +4,18 @@ session_start();
 
 if (!isset($_SESSION['logged_in'])) {
   $nav ='includes/nav.php';
+  $foot ='includes/secondfooter.php';
 }
 else {
   $nav ='includes/navconnected.php';
+  $foot ='includes/secondfooterconnected.php';
   $idsess = $_SESSION['id_user'];
 }
 
 
 require 'includes/header.php';
-require $nav; ?>
+require $nav; 
+ ?>
 
 <div class="container-fluid home" id="top">
   <div class="container search">
@@ -146,7 +149,6 @@ require $nav; ?>
                       <div class="divider animated slideInUp wow"></div>
                       <p class="animated slideInUp wow">Be the Best Marketplace for our traditional handmade.</p>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -183,5 +185,5 @@ require $nav; ?>
                 </div> -->
 
                 <?php
-                require 'includes/secondfooter.php';
+                require $foot;
                 require 'includes/footer.php'; ?>

@@ -4,21 +4,22 @@ if (isset($_POST['signup'])) {
   $email = $_POST['email'];
   $firstname = $_POST['nama_pertama'];
   $lastname = $_POST['nama_terakhir'];
+  $tgl= date("Y-m-d", strtotime($_POST['tgl_lahir']));
   $password = $_POST['password'];
   $address = $_POST['alamat_user'];
   $encryptedpass = md5($password);
 
-
   include 'db.php';
-
-  //connecting & inserting data
 
   $query = "INSERT INTO users VALUES ('','$email',
 '$firstname',
 '$lastname',
+'$tgl',
 '$encryptedpass',
 '$address',
-'client')";
+'client',
+CURRENT_TIME(),
+CURRENT_TIME())";
 
 if ($connection->query($query) === TRUE) {
 
@@ -28,9 +29,7 @@ if ($connection->query($query) === TRUE) {
         alert('Akun Anda Telah Terdaftar, Silahkan Login!');
         window.location='sign.php';
       </script>
-      <?php
-
-      
+      <?php    
 
      } else {
          echo "<h5 class='red-text'>Error: " . $query . "</h5>" . $connection->error;

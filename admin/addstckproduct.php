@@ -66,7 +66,7 @@ else {
 
 
              $newname = $_POST['name'];
-               $oldstok = $_POST['stock_barang'];
+               
            include '../db.php';
               // update info on users Toble
               $queryupdate = "UPDATE product SET stok_barang = '".$newstok."' WHERE id_product = ".$id;

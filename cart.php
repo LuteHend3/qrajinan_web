@@ -7,6 +7,7 @@ if ($_SESSION['item'] < 1 OR !isset($_SESSION['logged_in'])) {
 
 else {
   $nav ='includes/navconnected.php';
+  $foot ='includes/secondfooterconnected.php';
   $idsess = $_SESSION['id_user'];
   
 }
@@ -32,11 +33,11 @@ else {
      <table class="highlight">
         <thead>
           <tr>
-              <th data-field="name">Item Name</th>
-              <th data-field="category">Category</th>
-              <th data-field="price">Price</th>
-              <th data-field="quantity">Quantity</th>
-              <th data-field="quantity">Date Added</th>
+              <th data-field="name">Nama Product</th>
+              <th data-field="category">Kategori</th>
+              <th data-field="price">Harga</th>
+              <th data-field="quantity">Kuantitas</th>
+              <th data-field="tgl_transaksi">Tanggal ditambahkan</th>
               <th data-field="total">Total</th>
           </tr>
         </thead>
@@ -67,7 +68,7 @@ WHERE transaksi.id_product = product.id_product AND product.id_kategori = katego
           <tr>
             <td><?= $name_product; ?></td>
             <td><?= $category_product; ?></td>
-            <td><?= $price_product; ?></td>
+            <td>Rp <?= $price_product; ?></td>
             <td><?= $quantity_product; ?></td>
             <td><?= $tgl; ?></td>
             <td><?= $price_product*$quantity_product; ?></td>
@@ -83,5 +84,5 @@ WHERE transaksi.id_product = product.id_product AND product.id_kategori = katego
       </div>
    </div>
    <?php
-    require 'includes/secondfooter.php';
+    require $foot;
     require 'includes/footer.php'; ?>

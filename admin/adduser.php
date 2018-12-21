@@ -49,6 +49,12 @@ if ($_SESSION['role'] !== 'admin') {
           <label for="icon_prefix">Nama Terakhir</label>
         </div>
 
+        <div class="input-field col s12">
+          Tanggal Lahir<br>
+          <i class="material-icons prefix">event</i> 
+          <input id="icon_prefix" type="date" name="tgl_lahir" class="validate" required>
+          
+        </div>
 
         <div class="input-field col s12 ">
           <i class="material-icons prefix">location_on</i>
@@ -73,7 +79,7 @@ if ($_SESSION['role'] !== 'admin') {
                 <button type="submit" id="confirmed" name="signup" class="btn meh button-rounded waves-effect waves-light ">Add Admin</button>
             </div>
             <p>With this the user will be an Admin<a href=""> User Agreement</a>,
-              at least he/she 18 years old <a href="">Privacy Notice and receiving</a>
+              don't racist <a href="">Privacy Notice and receiving</a>
               marketing communications from us.</p>
        </form>
      </div>

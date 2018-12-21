@@ -15,7 +15,7 @@ if ($_SESSION['role'] !== 'admin') {
         <div class="nav-wrapper">
           <div class="col s12">
             <a href="index" class="breadcrumb">Qrajinan</a>
-            <a href="infoproduct" class="breadcrumb">Products</a>
+            <a href="infoproduct" class="breadcrumb">Produk</a>
             <a href="stats" class="breadcrumb">Stats</a>
           </div>
         </div>

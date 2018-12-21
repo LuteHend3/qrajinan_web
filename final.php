@@ -32,7 +32,7 @@
            $productcmd = $rowcmd['product'];
            $quantitycmd = $rowcmd['quantity'];
            $pricecmd = $rowcmd['price'];
-           $stock = $rowcmd['stock'];
+           
            $idtrsk = $rowcmd['idtrsk'];
            $firstnamecmd = $_POST['firstname'];
            $lastnamecmd = $_POST['lastname'];
@@ -61,13 +61,19 @@
                                                                '$addresscmd',
                                                                'ready')";
     $resultdetails = $connection->query($query_details);
-$stok_final = $stock - $quantitycmd;
-$stokkurang = "UPDATE product SET stok_barang = $stok_final WHERE id_product = '$idproductcmd'";
-$stok_kurang = mysqli_query($connection, $stokkurang);
+
 
     $querypay = "UPDATE transaksi SET status_transaksi = 'paid' WHERE id_user = '{$_SESSION['id_user']}' AND status_transaksi = 'ordered'";     
     $resultpay = mysqli_query($connection, $querypay);
+
+ $querystok = ("SELECT * FROM product WHERE id_product = ".$idproductcmd);
+                  $resultstok = $connection->query($querystok);
+                  $row = $resultstok->fetch_object();
+      $stok_final = $row->stok_barang - $quantitycmd;
+$stokkurang = "UPDATE product SET stok_barang = $stok_final WHERE id_product = '$idproductcmd'";
+$stok_kurang = mysqli_query($connection, $stokkurang);
   }
+
 }
     unset($_SESSION["item"]);
 

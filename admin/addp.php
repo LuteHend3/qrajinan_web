@@ -42,12 +42,12 @@ require 'includes/navconnected.php'; } ?>
         <div class="input-field col s6">
           <i class="fa fa-product-hunt prefix"></i>
           <input id="icon_prefix" type="text" class="validate" name="name" required="">
-          <label for="icon_prefix">Item name</label>
+          <label for="icon_prefix">Nama Product</label>
         </div>
 
         <div class="input-field col s6">
           <input id="icon_prefix" type="number" class="validate" name="price" required="">
-          <label for="icon_prefix">Price</label>
+          <label for="icon_prefix">Harga</label>
         </div>
 
                 <div class="input-field col s6">
@@ -59,7 +59,7 @@ require 'includes/navconnected.php'; } ?>
         <div class="input-field col s12">
           <i class="material-icons prefix">mode_edit</i>
           <textarea id="icon_prefix2" class="materialize-textarea" name="description" required=""></textarea>
-          <label for="icon_prefix2">Description</label>
+          <label for="icon_prefix2">Deskripsi</label>
         </div>
 
         <div class="file-field input-field col s6">

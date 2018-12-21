@@ -2,10 +2,12 @@
 session_start();
 
 if (!isset($_SESSION['logged_in'])) {
-    $nav ='includes/nav.php';
+  $nav ='includes/nav.php';
+  $foot ='includes/secondfooter.php';
 }
 else {
   $nav ='includes/navconnected.php';
+  $foot ='includes/secondfooterconnected.php';
   $idsess = $_SESSION['id_user'];
 }
 
@@ -124,5 +126,5 @@ $id_category =$_GET['id_kategori'];
 </div>
 
   <?php
-   require 'includes/secondfooter.php';
+   require $foot;
    require 'includes/footer.php'; ?>

@@ -6,10 +6,12 @@ if (!isset($_GET['id'])) {
 }
 
 if (!isset($_SESSION['logged_in'])) {
-  $nav = 'includes/nav.php';
+  $nav ='includes/nav.php';
+  $foot ='includes/secondfooter.php';
 }
 else {
   $nav ='includes/navconnected.php';
+  $foot ='includes/secondfooterconnected.php';
   $idsess = $_SESSION['id_user'];
 }
 
@@ -145,7 +147,7 @@ $id_product =$_GET['id'];
   </div>
 </div>
 <?php
- require 'includes/secondfooter.php';
+require $foot;
  require 'includes/footer.php'; 
  ?>
 

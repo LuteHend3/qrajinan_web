@@ -3,7 +3,8 @@
 session_start();
 
 if (!isset($_SESSION['logged_in'])) {
-    $nav ='includes/nav.php';
+  $nav ='includes/nav.php';
+  $foot ='includes/secondfooter.php';
 }
 
 elseif($_SESSION['logged_in'] == 'True') {
@@ -12,6 +13,7 @@ elseif($_SESSION['logged_in'] == 'True') {
 
 else{
   $nav ='includes/navconnected.php';
+  $foot ='includes/secondfooterconnected.php';
   $idsess = $_SESSION['id_user'];
 }
 error_reporting(0);
@@ -60,6 +62,12 @@ error_reporting(0);
           <label for="icon_prefix">Nama Terakhir</label>
         </div>
 
+        <div class="input-field col s12">
+          Tanggal Lahir<br>
+          <i class="material-icons prefix">event</i> 
+          <input id="icon_prefix" type="date" name="tgl_lahir" class="validate" required>
+          
+        </div>
 
         <div class="input-field col s12 ">
           <i class="material-icons prefix">location_on</i>
@@ -85,7 +93,7 @@ error_reporting(0);
             </div>
 
             <p>By Registering, you agree that you've read and accepted our <a href="">User Agreement</a>,
-              you're at least 18 years old, and you consent to our <a href="">Privacy Notice and receiving</a>
+              you consent to our <a href="">Privacy Notice and receiving</a>
               marketing communications from us.</p>
 
        </form>

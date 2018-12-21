@@ -4,6 +4,7 @@ if (isset($_POST['signup'])) {
   $email = $_POST['email'];
   $firstname = $_POST['nama_pertama'];
   $lastname = $_POST['nama_terakhir'];
+  $tgl= date("Y-m-d", strtotime($_POST['tgl_lahir']));
   $password = $_POST['password'];
   $address = $_POST['alamat_user'];
   $encryptedpass = md5($password);
@@ -16,8 +17,11 @@ if (isset($_POST['signup'])) {
   $query = "INSERT INTO users VALUES ('','$email',
 '$firstname',
 '$lastname',
+'$tgl',
 '$encryptedpass',
 '$address',
+CURRENT_TIME(),
+'',
 'admin')";
 
 if ($connection->query($query) === TRUE) {

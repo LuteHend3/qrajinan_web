@@ -17,7 +17,7 @@ else {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Smartshop</a>
+            <a href="index" class="breadcrumb">Qrajinan</a>
             <a href="editprofile" class="breadcrumb">Edit Profile</a>
           </div>
         </div>
@@ -56,6 +56,13 @@ else {
           <label for="icon_prefix">Nama Terakhir</label>
         </div>
 
+                <div class="input-field col s12">
+          Tanggal Lahir<br>
+          <i class="material-icons prefix">event</i> 
+          <input id="icon_prefix" type="date" name="tgl_lahir" class="validate" required value="<?php echo $data['tgl_lahir'] ?>">
+          
+        </div>
+
 
         <div class="input-field col s12 ">
           <i class="material-icons prefix">location_on</i>
@@ -84,19 +91,24 @@ else {
                $newemail = $_POST['email'];
                $newnamapertama = $_POST['nama_pertama'];
                $newnamatrkhir = $_POST['nama_terakhir'];
+               $newtgl= date("Y-m-d", strtotime($_POST['tgl_lahir']));
                $newalamat = $_POST['alamat_user'];
                $newpassword = md5($_POST['password']);
 
               include 'db.php';
               // update info on users Toble
-              $queryupdate = "UPDATE users SET email ='$newemail', firstname ='$newnamapertama', lastname ='$newnamatrkhir', address ='$newalamat', password ='$newpassword' WHERE id_user='$idsess'";
+              $queryupdate = "UPDATE users SET email ='$newemail', firstname ='$newnamapertama', lastname ='$newnamatrkhir',tgl_lahir = '$newtgl', password ='$newpassword', address ='$newalamat', update_at=CURRENT_TIME() WHERE id_user='$idsess'";
               //$result = $connection->query($queryupdate);
 
               //echo "<meta http-equiv='refresh' content='0'; url='index' />";
-              if ($connection->query($queryupdate) === TRUE ) {
-          echo "<div class='center-align'>
-                 <h5 class='green-text'>Profile Update Successfully</h5>
-                 </div><br><br>";
+              if ($connection->query($queryupdate) === TRUE ) {        
+      ?>
+      <script type="text/javascript">
+        alert('Profile Update Successfully');
+        window.location='editprofile.php';
+      </script>
+      <?php  
+
 
      } else {
          echo "<h5 class='red-text '>Error: " . $queryupdate . "</h5><br><br><br>" . $connection->error;

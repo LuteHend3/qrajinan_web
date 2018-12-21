@@ -15,11 +15,11 @@ else {
    <table>
       <thead>
         <tr>
-            <th data-field="name">Item Name</th>
-            <th data-field="category">quantity</th>
-            <th data-field="price">price</th>
-            <th data-field="quantity">user</th>
-            <th data-field="address">address</th>
+            <th data-field="name">Nama Product</th>
+            <th data-field="quantity">Kuantitas</th>
+            <th data-field="price">Harga</th>
+            <th data-field="user">Atas Nama</th>
+            <th data-field="address">Alamat</th>
         </tr>
       </thead>
       <tbody class="scroll">
@@ -43,7 +43,7 @@ else {
         <tr>
           <td><?= $product_details; ?></td>
           <td><?= $quantity_details; ?></td>
-          <td>$ <?= $price_details; ?></td>
+          <td>Rp <?= $price_details; ?></td>
           <td><?= $user_details; ?></td>
           <td><?= $address_details; ?></td>
         </tr>
@@ -65,7 +65,8 @@ else {
       <p>Thank you for trusting us © Qrajinan Corp <?= date('Y'); ?></p>
     </div>
 
-    <form method="post">
+    <table>
+      <tr><form method="post">
       <button type="submit" name="done" class="button-rounded waves-effect waves-light btn">Home</button>
       <!--<button type="submit" name="done2" class="blue waves-effect waves-light btn">
       save as pdf <i class="fa fa-print"></i></button>-->
@@ -82,7 +83,14 @@ else {
         }
 
        ?>
-    </form>
+    </form></tr>
+    <tr><span> </span></tr>
+
+    <tr><form method="POST" action="includes/report.php" target="_blank">
+      <button type="submit" name="cetak" class="button-rounded waves-effect waves-light btn">Cetak</button>
+    </form></tr>
+    </table>
+    
  </div>
 
 <?php require 'includes/footer.php'; ?>

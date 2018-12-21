@@ -11,17 +11,18 @@
                <ul>
                  <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="sign">Sign In</a></li>
                  <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="404">Ngiklan Di Qrajinan</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Batik</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Aksesoris</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category?id_kategori=1">Batik</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category?id_kategori=2">Aksesoris</a></li>
                </ul>
              </div>
 
              <div class="col s12 l4 ">
                <ul>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Miniatur</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Alat musik</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Gift dan souvenirs</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category">Pakaian</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category?id_kategori=3">Miniatur</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category?id_kategori=4">Alat musik</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category?id_kategori=5">Pakaian</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category?id_kategori=6">Gift dan souvenirs</a></li>
+               
                </ul>
              </div>
            </div>
