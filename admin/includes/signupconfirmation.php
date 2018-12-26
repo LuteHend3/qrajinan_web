@@ -20,9 +20,9 @@ if (isset($_POST['signup'])) {
 '$tgl',
 '$encryptedpass',
 '$address',
+'admin',
 CURRENT_TIME(),
-'',
-'admin')";
+'')";
 
 if ($connection->query($query) === TRUE) {
 
